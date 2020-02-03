@@ -2,3 +2,4 @@ env.sh
 authorized_keys
 openwrt-*
 9*_pass.sh
+!bin/*
