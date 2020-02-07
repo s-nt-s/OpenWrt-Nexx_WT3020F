@@ -8,7 +8,7 @@ if [ -f ~/.ssh/nexx.pub ]; then
   sed 's/ \S*@\S*\s*$/ my@pc/' -i files/etc/dropbear/authorized_keys
 fi
 
-cat << EOF_cat > files/etc/uci-defaults/99_pass.sh
+cat << EOF_cat > files/etc/uci-defaults/98_pass.sh
 #!/bin/sh
 # Darle seguridad a la wifi
 sed "s/option encryption 'none'/option encryption 'psk2'\n\toption key '${WIFI_PASS}'/" -i /etc/config/wireless
