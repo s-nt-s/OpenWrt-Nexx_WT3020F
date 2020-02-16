@@ -14,7 +14,9 @@ paquetes a posteriori. Ver:
 provoca que necesitemos dedicar permanentemente un pendrive al router. Prefiero tener
 el sistema enteramente en el router, y usar el usb solo para almacenamiento de datos y memoria `swap` de manera que sea fácil prescindir de él o sustituirlo por otro.
 
-# Guía rápida
+# Realización
+
+## Guía rápida
 
 * Usar [`image builder`](https://openwrt.org/docs/guide-user/additional-software/imagebuilder)
 * [Eliminar paquetes](https://openwrt.org/faq/which_packages_can_i_safely_remove_to_save_space) no deseados
@@ -102,7 +104,7 @@ EOF_cat
 
 Ver [`files` del repositorio](files/) para observar el resultado final.
 
-## Creacción de imagen
+## Creación de imagen
 
 Ejemplo:
 
