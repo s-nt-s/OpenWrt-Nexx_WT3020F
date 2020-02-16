@@ -115,4 +115,4 @@ $ make image PROFILE="wt3020-8M" PACKAGES="aircrack-ng airmon-ng kmod-usb-storag
 ```
 
 Para no tener que escribir esto cada vez, lo meto en el script [`build.sh`](build.sh) que
-además se encarga de crear los ficheros de configuración para definir las claves para `root` y la red inalámbrica principal (en caso de que exista el fichero `.env.sh`).
+además se encarga de crear los ficheros de configuración para definir las claves para `root` y la red inalámbrica principal (en caso de que exista el fichero `env.sh`).
