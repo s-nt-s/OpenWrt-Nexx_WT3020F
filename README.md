@@ -8,8 +8,8 @@ ahorrando el máximo espacio y evitando tener que hacer [`extroot`](https://open
 * Tal como esta hecho `OpenWrt` es mejor crear una imagen con los paquetes deseados,
 que quemar [la imagen por defecto](https://openwrt.org/toh/nexx/wt3020) e instalar/desintalar
 paquetes a posteriori. Ver:
-  * [reddit.com - What can i safely remove from this list to save space?](https://www.reddit.com/r/openwrt/comments/9zyn09/what_can_i_safely_remove_from_this_list_to_save/ead6b8o/)
-  * [openwrt.org - No space left on device](https://openwrt.org/faq/no_space_left_on_device)
+    * [reddit.com - What can i safely remove from this list to save space?](https://www.reddit.com/r/openwrt/comments/9zyn09/what_can_i_safely_remove_from_this_list_to_save/ead6b8o/)
+    * [openwrt.org - No space left on device](https://openwrt.org/faq/no_space_left_on_device)
 * Hacer [`extroot`](https://openwrt.org/docs/guide-user/additional-software/extroot_configuration)
 provoca que necesitemos dedicar permanentemente un pendrive al router. Prefiero tener
 el sistema enteramente en el router, y usar el usb solo para almacenamiento de datos y memoria `swap` de manera que sea fácil prescindir de él o sustituirlo por otro.
@@ -27,8 +27,8 @@ el sistema enteramente en el router, y usar el usb solo para almacenamiento de d
 * Automontar USB con una partición paras `swap` y otra para datos `ext4`
 * Añadir `alias` y `pront` al gusto
 * Configurar redes inalámbricas:
-  * Poner contraseña a la red principal
-  * Crear una red para invitados protegida con `nodogsplash`
+    * Poner contraseña a la red principal
+    * Crear una red para invitados protegida con `nodogsplash`
 
 ## Preparar entorno
 
@@ -40,10 +40,10 @@ $ sudo apt-get install build-essential libncurses5-dev libncursesw5-dev zlib1g-d
 
 Navegando por openwrt.org:
 
-  * [nexx_wt3020f](https://openwrt.org/toh/hwdata/nexx/nexx_wt3020f)
-  * [19.07.0 - Firmware OpenWrt Install](http://downloads.openwrt.org/releases/19.07.0/targets/ramips/mt7620/openwrt-19.07.0-ramips-mt7620-wt3020-8M-squashfs-factory.bin)
-  * [19.07.0 - Carpeta de ramips/mt7620](http://downloads.openwrt.org/releases/19.07.0/targets/ramips/mt7620/)
-  * [19.07.0 - imagebuilder](http://downloads.openwrt.org/releases/19.07.0/targets/ramips/mt7620/openwrt-imagebuilder-19.07.0-ramips-mt7620.Linux-x86_64.tar.xz)
+* [nexx_wt3020f](https://openwrt.org/toh/hwdata/nexx/nexx_wt3020f)
+* [19.07.0 - Firmware OpenWrt Install](http://downloads.openwrt.org/releases/19.07.0/targets/ramips/mt7620/openwrt-19.07.0-ramips-mt7620-wt3020-8M-squashfs-factory.bin)
+* [19.07.0 - Carpeta de ramips/mt7620](http://downloads.openwrt.org/releases/19.07.0/targets/ramips/mt7620/)
+* [19.07.0 - imagebuilder](http://downloads.openwrt.org/releases/19.07.0/targets/ramips/mt7620/openwrt-imagebuilder-19.07.0-ramips-mt7620.Linux-x86_64.tar.xz)
 
 ```console
 $ wget "http://downloads.openwrt.org/releases/19.07.0/targets/ramips/mt7620/openwrt-imagebuilder-19.07.0-ramips-mt7620.Linux-x86_64.tar.xz"
