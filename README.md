@@ -1,6 +1,6 @@
 # Objetvio
 
-Crear una imagen `OpenWrt` para el router [`Nexx WT3020F`] con los paquetes básicos,
+Crear una imagen `OpenWrt` para el router [`Nexx WT3020F`](https://wikidevi.wi-cat.ru/Nexx_WT3020) con los paquetes básicos,
 ahorrando el máximo espacio y evitando tener que hacer [`extroot`](https://openwrt.org/docs/guide-user/additional-software/extroot_configuration)
 
 ## ¿Por qué?
