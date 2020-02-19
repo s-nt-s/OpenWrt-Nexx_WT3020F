@@ -1,4 +1,3 @@
-alias getip="wget -q http://ifconfig.me -O - || wget -q http://icanhazip.com -O -"
 alias cget="wget -q -O - "
 alias mon="iw phy phy0 interface add mon0 type monitor && ifconfig mon0 up"
 alias ivs="airodump-ng --ivs --beacons mon0 --write"

@@ -99,3 +99,7 @@ config domain
 	option ip '172.22.216.37'
 EOF_cat
 fi
+if [ -f /usr/bin/getip.sh ]; then
+	mv /usr/bin/getip.sh /usr/bin/getip
+  chmod 755 /usr/bin/getip
+fi
