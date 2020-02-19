@@ -1,3 +1,4 @@
+479a5f25cc4e6197dc73bacddccbab0383817fd2ea4c2220ad03786db6bd7579 *README.md
 351a868988983e1ceb443fccf2bed15c9a777e42afbdf811f5fb6ce4d74b419e *openwrt-19.07.1-ramips-mt7620-device-wt3020-8m.manifest
-098abb17414cde15414c04778f5da71835cd4daddfb1ab5c1ae4230595c53c04 *openwrt-19.07.1-ramips-mt7620-wt3020-8M-squashfs-factory.bin
-bf1e9535b74b2340e63e0d106c4f944f5e8113de09cb554f96b17c8d5a386a98 *openwrt-19.07.1-ramips-mt7620-wt3020-8M-squashfs-sysupgrade.bin
+f3c0e927805fb08aeee2fce3673fe1b100a7b99277b186ceb50912ef2307b0ee *openwrt-19.07.1-ramips-mt7620-wt3020-8M-squashfs-factory.bin
+87de5eed620f854d29b7874d528a834ea110c7e817ee4fad5ae15da662cb20e0 *openwrt-19.07.1-ramips-mt7620-wt3020-8M-squashfs-sysupgrade.bin

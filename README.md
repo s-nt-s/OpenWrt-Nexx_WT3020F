@@ -25,7 +25,9 @@ el sistema enteramente en el router, y usar el usb solo para almacenamiento de d
 * Cambiar la ip a `192.168.8.1` para que coincida con la de la pegatina del router y para que no colisione con otros routers
 * Habilitar la contraseña `root`
 * Automontar USB con una partición paras `swap` y otra para datos `ext4`
-* Añadir `alias` y `pront` al gusto
+* Añadir `alias` y `prompt` al gusto
+* Añadir un comando para obtener la ip pública
+* Poner el router en la misma zona horaria que la del ordenador donde se esta generando la imagen
 * Configurar redes inalámbricas:
     * Poner contraseña a la red principal
     * Crear una red para invitados protegida con `nodogsplash`

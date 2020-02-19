@@ -2,6 +2,7 @@ env.sh
 authorized_keys
 openwrt-*
 9*_pass.sh
+9*_timezone.sh
 bin/*.bin
 !bin/openwrt-*.manifest
 debug/*
