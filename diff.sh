@@ -9,27 +9,28 @@ FLD_URL=$(echo "$BIN_URL" | sed 's/[^\/]*$//' )
 MNF_URL=$(lynx -listonly -dump "$FLD_URL" | grep 'openwrt' | grep ".manifest" | sed 's/.* //')
 ARR_OFI=( $(curl -s "$MNF_URL" | cut -d' ' -f1 | sort | uniq) )
 ARR_CUS=( $(cat bin/*.manifest | cut -d' ' -f1 | sort | uniq) )
-echo "########"
-echo "# A = $MNF_URL"
-echo "# B = $(ls bin/*.manifest | cut -d'/' -f2)"
-echo "# + = Esta en B pero no en A"
-echo "# - = Esta en A pero no en B"
-echo "########"
-
 ARR_NEW=( $(comm -13 <(printf '%s\n' "${ARR_OFI[@]}") <(printf '%s\n' "${ARR_CUS[@]}")) )
 ARR_REM=( $(comm -13 <(printf '%s\n' "${ARR_CUS[@]}") <(printf '%s\n' "${ARR_OFI[@]}")) )
 
-for c in $(sort <(for f in "${ARR_NEW[@]}" ; do echo "$f" ; done) <(for f in "${ARR_REM[@]}" ; do echo "$f" ; done)); do
-    for i in "${ARR_NEW[@]}"; do
-        if [ "$i" == "$c" ] ; then
-            echo "+ $c"
-        fi
-    done
-    for i in "${ARR_REM[@]}"; do
-        if [ "$i" == "$c" ] ; then
-            echo "- $c"
-        fi
-    done
+VRS=$(echo "$MNF_URL" | rev | cut -d'/' -f 1 | rev | sed 's/\.[^\.]*$//')
+echo "# Cambios con respecto a [$VRS]($MNF_URL)"
+echo ""
+echo "## Paquetes eliminados"
+echo ""
+if [ "${#ARR_REM[@]}" -eq 0 ]; then
+echo "No se ha eliminado ningún paquete"
+else
+for i in "${ARR_REM[@]}"; do
+    echo "* $i"
 done
-
-
+fi
+echo ""
+echo "## Paquetes añadidos"
+echo ""
+if [ "${#ARR_NEW[@]}" -eq 0 ]; then
+echo "No se ha añadido ningún paquete"
+else
+for i in "${ARR_NEW[@]}"; do
+    echo "* $i"
+done
+fi
