@@ -17,6 +17,7 @@ ipset - 7.3-1
 iptables - 1.8.3-1
 iptables-mod-ipopt - 1.8.3-1
 iw-full - 5.0.1-1
+iwinfo - 2019-10-16-07315b6f-1
 jshn - 2020-01-20-43a103ff-1
 jsonfilter - 2018-02-04-c7e938d6-1
 kernel - 4.14.167-1-18384755d38fc43c447d83d4a3e07054
@@ -117,6 +118,7 @@ openwrt-keyring - 2019-07-25-8080ef34-1
 opkg - 2020-01-25-c09fe209-1
 ppp - 2.4.7.git-2019-05-25-2
 ppp-mod-pppoe - 2.4.7.git-2019-05-25-2
+privoxy - 3.0.28-1
 procd - 2020-01-24-31e4b2df-1
 procps-ng - 3.3.15-2
 reaver - 1.6.5-1
