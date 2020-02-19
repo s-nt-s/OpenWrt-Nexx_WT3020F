@@ -7,14 +7,14 @@ sed "s/option ssid 'OpenWrt'/option ssid 'NEXX'/" -i /etc/config/wireless
 rm /etc/banner
 # Montar USB
 if [ -f /etc/config/fstab ]; then
-if ! grep -q '5c88f9ec-b33e-4801-af3e-1822c1acbb2f' /etc/config/fstab; then
+if ! grep -q '/dev/sda1' /etc/config/fstab; then
 cat << EOF_cat >> /etc/config/fstab
 config swap
-	option uuid '5c88f9ec-b33e-4801-af3e-1822c1acbb2f'
+	option device '/dev/sda2'
 	option enabled '1'
 
 config mount
-	option uuid 'af184e4d-707f-4d70-bad6-9888dc2f42a7'
+	option device '/dev/sda1'
 	option enabled '1'
 	option target '/mnt/usb'
 	option enabled_fsck '1'
