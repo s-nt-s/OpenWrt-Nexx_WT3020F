@@ -68,6 +68,7 @@ uci set wireless.wifinet1.ssid='FreeWifi'
 uci set wireless.wifinet1.encryption='none'
 uci set wireless.wifinet1.isolate='1'
 uci set wireless.wifinet1.network='guest'
+uci set wireless.wifinet1.disabled='1'
 uci commit network
 uci commit dhcp
 uci commit firewall
@@ -77,12 +78,13 @@ service dnsmasq restart
 service firewall restart
 # Deshabilitar nodogsplash
 if [ -f /etc/config/nodogsplash ]; then
-  #sed 's/option enabled 1/option enabled 0/' -i /etc/config/nodogsplash
+  sed 's/option enabled 1/option enabled 0/' -i /etc/config/nodogsplash
   sed "s/option gatewayinterface 'br-lan'/option gatewayinterface 'br-guest' # 'br-lan'/" -i /etc/config/nodogsplash
   sed "s/option gatewayname 'OpenWrt Nodogsplash'/option gatewayname 'FreeWifi'/" -i /etc/config/nodogsplash
   sed "s/list authenticated_users 'allow all'/#list authenticated_users 'allow all'/" -i /etc/config/nodogsplash
   sed -E "s/#(list authenticated_users 'allow .*(53|80|443))/\1/" -i /etc/config/nodogsplash
   sed -E "s/(list users_to_router 'allow .*(22|23|80|443))/#\1/" -i /etc/config/nodogsplash
+	service nodogsplash restart
 fi
 # Eliminar shadow-chpasswd (solo lo queriamos para definir la clave de root)
 opkg remove shadow-chpasswd
