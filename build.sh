@@ -36,10 +36,12 @@ fi
 sed 's/\s\s*/\n/g' packages.txt | sed '/^\s*$/d' | sort | uniq > packages.txt.tmp
 mv packages.txt.tmp packages.txt
 PCKS=$(paste -sd " " packages.txt)
+
 cd openwrt*/
 if [ "$1" == "clean" ]; then
     make clean
 fi
+
 make image PROFILE="wt3020-8M" PACKAGES="$PCKS" FILES=files/ BIN_DIR="$(realpath ..)/bin"
 
 cd ..

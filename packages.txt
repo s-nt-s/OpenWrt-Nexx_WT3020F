@@ -21,7 +21,6 @@ nodogsplash
 reaver
 rpcd-mod-rrdns
 screen
-shadow-chpasswd
 tcpdump
 uhttpd
 uhttpd-mod-ubus

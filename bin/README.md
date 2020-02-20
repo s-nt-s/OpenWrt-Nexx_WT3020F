@@ -42,8 +42,6 @@
 * procps-ng
 * reaver
 * screen
-* shadow-chpasswd
-* shadow-common
 * tcpdump
 * terminfo
 * uclibcxx

@@ -127,8 +127,6 @@ rpcd-mod-iwinfo - 2019-11-10-77ad0de0-1
 rpcd-mod-luci - 20191114
 rpcd-mod-rrdns - 20170710
 screen - 4.6.2-3
-shadow-chpasswd - 4.8.1-1
-shadow-common - 4.8.1-1
 swconfig - 12
 tcpdump - 4.9.3-1
 terminfo - 6.1-5

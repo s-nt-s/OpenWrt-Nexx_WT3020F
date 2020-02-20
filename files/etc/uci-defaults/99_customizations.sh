@@ -86,8 +86,6 @@ if [ -f /etc/config/nodogsplash ]; then
   sed -E "s/(list users_to_router 'allow .*(22|23|80|443))/#\1/" -i /etc/config/nodogsplash
 	service nodogsplash restart
 fi
-# Eliminar shadow-chpasswd (solo lo queriamos para definir la clave de root)
-opkg remove shadow-chpasswd
 # hostnames
 if ! grep -q 'madrid.org' /etc/config/dhcp; then
 # Facilita la conexion a la wifi de las bibliotecas de Madrid
