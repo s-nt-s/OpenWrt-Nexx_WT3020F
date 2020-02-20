@@ -105,3 +105,6 @@ if [ -f /usr/bin/getip.sh ]; then
 	mv /usr/bin/getip.sh /usr/bin/getip
   chmod 755 /usr/bin/getip
 fi
+if [ -f /usr/bin/set_root_pws.lua ]; then
+	rm /usr/bin/set_root_pws.lua
+fi

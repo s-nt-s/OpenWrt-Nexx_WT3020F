@@ -14,7 +14,7 @@ cat << EOF_cat > files/etc/uci-defaults/98_pass.sh
 sed "s/option encryption 'none'/option encryption 'psk2'\n\toption key '${WIFI_PASS}'/" -i /etc/config/wireless
 sed "/option disabled '1'/d" -i /etc/config/wireless
 # Poner la pass a root
-echo "root:${ROOT_PASS}" | chpasswd -c MD5
+echo -e "${ROOT_PASS}\n${ROOT_PASS}" | passwd
 EOF_cat
 fi
 if [ -f /etc/timezone ]; then
