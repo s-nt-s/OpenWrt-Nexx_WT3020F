@@ -8,6 +8,8 @@
 
 * aircrack-ng
 * airmon-ng
+* bind-dig
+* bind-libs
 * block-mount
 * ethtool
 * ipset
@@ -28,23 +30,16 @@
 * kmod-usb-ohci
 * kmod-usb-storage
 * kmod-usb-storage-extras
-* knot-dig
-* knot-libs
 * libatomic1
-* libedit
-* libgmp10
-* libgnutls
 * libipset13
 * libmicrohttpd-no-ssl
 * libmnl0
 * libncurses6
-* libnettle7
 * libnl-core200
 * libnl-genl200
 * libopenssl1.1
 * libpcap1
 * libpcre
-* lmdb
 * nano
 * nodogsplash
 * procps-ng

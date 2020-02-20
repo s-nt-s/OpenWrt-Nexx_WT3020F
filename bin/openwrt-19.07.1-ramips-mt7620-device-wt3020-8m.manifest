@@ -1,6 +1,8 @@
 aircrack-ng - 1.5.2
 airmon-ng - 1.5.2
 base-files - 204.2-r10911-c155900f66
+bind-dig - 9.14.8-1
+bind-libs - 9.14.8-1
 block-mount - 2020-01-18-189b41b6-1
 busybox - 1.30.1-5
 cgi-io - 16
@@ -63,15 +65,10 @@ kmod-usb-ohci - 4.14.167-1
 kmod-usb-storage - 4.14.167-1
 kmod-usb-storage-extras - 4.14.167-1
 kmod-usb2 - 4.14.167-1
-knot-dig - 2.9.2-1
-knot-libs - 2.9.2-1
 libatomic1 - 7.5.0-2
 libblobmsg-json - 2020-01-20-43a103ff-1
 libc - 1.1.24-2
-libedit - 20191025-3.1-1
 libgcc1 - 7.5.0-2
-libgmp10 - 6.1.2-2
-libgnutls - 3.6.11.1-1
 libip4tc2 - 1.8.3-1
 libip6tc2 - 1.8.3-1
 libipset13 - 7.3-1
@@ -85,7 +82,6 @@ liblucihttp0 - 2019-07-05-a34a17d5-1
 libmicrohttpd-no-ssl - 0.9.62-3
 libmnl0 - 1.0.4-2
 libncurses6 - 6.1-5
-libnettle7 - 3.5.1-1
 libnl-core200 - 3.4.0-2
 libnl-genl200 - 3.4.0-2
 libnl-tiny - 0.1-5
@@ -99,7 +95,6 @@ libubus20191227 - 2019-12-27-041c9d1c-1
 libuci20130104 - 2019-09-01-415f9e48-3
 libuclient20160123 - 2019-05-30-3b3e368d-1
 libxtables12 - 1.8.3-1
-lmdb - 0.9.24-2
 logd - 2019-06-16-4df34a4d-3
 lua - 5.1.5-3
 luci - git-20.048.32085-85a6f07-1
