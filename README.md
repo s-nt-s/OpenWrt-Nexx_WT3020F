@@ -43,12 +43,12 @@ $ sudo apt-get install build-essential libncurses5-dev libncursesw5-dev zlib1g-d
 Navegando por openwrt.org:
 
 * [nexx_wt3020f](https://openwrt.org/toh/hwdata/nexx/nexx_wt3020f)
-* [19.07.0 - Firmware OpenWrt Install](http://downloads.openwrt.org/releases/19.07.0/targets/ramips/mt7620/openwrt-19.07.0-ramips-mt7620-wt3020-8M-squashfs-factory.bin)
-* [19.07.0 - Carpeta de ramips/mt7620](http://downloads.openwrt.org/releases/19.07.0/targets/ramips/mt7620/)
-* [19.07.0 - imagebuilder](http://downloads.openwrt.org/releases/19.07.0/targets/ramips/mt7620/openwrt-imagebuilder-19.07.0-ramips-mt7620.Linux-x86_64.tar.xz)
+* [21.02.1 - Firmware OpenWrt Install](https://downloads.openwrt.org/releases/21.02.1/targets/ramips/mt7620/openwrt-21.02.1-ramips-mt7620-nexx_wt3020-8m-squashfs-factory.bin)
+* [21.02.1 - Carpeta de ramips/mt7620](https://downloads.openwrt.org/releases/21.02.1/targets/ramips/mt7620/)
+* [21.02.1 - imagebuilder](https://downloads.openwrt.org/releases/21.02.1/targets/ramips/mt7620/openwrt-imagebuilder-21.02.1-ramips-mt7620.Linux-x86_64.tar.xz)
 
 ```console
-$ wget "http://downloads.openwrt.org/releases/19.07.0/targets/ramips/mt7620/openwrt-imagebuilder-19.07.0-ramips-mt7620.Linux-x86_64.tar.xz"
+$ wget "https://downloads.openwrt.org/releases/21.02.1/targets/ramips/mt7620/openwrt-imagebuilder-21.02.1-ramips-mt7620.Linux-x86_64.tar.xz"
 $ tar xf *.tar.xz
 ```
 
@@ -59,11 +59,11 @@ Haciendo `make info` vemos que el `profile` que nos corresponde es `wt3020-8M`
 ```console
 $ make info
 ...
-wt3020-8M:
-    Nexx WT3020 (8MB)
+nexx_wt3020-8m:
+    Nexx WT3020 8M
     Packages: kmod-usb2 kmod-usb-ohci
     hasImageMetadata: 1
-    SupportedDevices: wt3020-8M wt3020
+    SupportedDevices: nexx,wt3020-8m wt3020 wt3020-8M
 ...
 ```
 
@@ -72,7 +72,7 @@ Sirva de ejemplo este extracto donde:
 
 * se crea un alias para obtener la ip pública
 * se define `nano` como editor por defecto
-* se añade la clave pública de la clave privada con la que queremos hacer `ssh` al rotuer:
+* se añade la clave pública de la clave privada con la que queremos hacer `ssh` al router:
 
 ```console
 $ mkdir files
@@ -118,3 +118,10 @@ $ make image PROFILE="wt3020-8M" PACKAGES="aircrack-ng airmon-ng kmod-usb-storag
 
 Para no tener que escribir esto cada vez, lo meto en el script [`build.sh`](build.sh) que
 además se encarga de crear los ficheros de configuración para definir las claves para `root` y la red inalámbrica principal (en caso de que exista el fichero `env.sh`).
+
+## Actualización
+
+```
+$ scp bin/openwrt-*-squashfs-sysupgrade.bin nexx:usb/
+$ ssh nexx 'sysupgrade -n -v usb/openwrt-*-sysupgrade.bin'
+```

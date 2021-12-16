@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 cd "$(dirname "$0")"
 ROOT_URL="https://openwrt.org/toh/hwdata/nexx/nexx_wt3020f"
 if [ ! -z "$1" ]; then

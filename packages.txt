@@ -1,6 +1,8 @@
-aircrack-ng
-airmon-ng
-bind-dig
+msmtp
+#ssmtp
+#aircrack-ng
+#airmon-ng
+#bind-dig
 block-mount
 ipset
 iwinfo
@@ -18,8 +20,8 @@ luci-proto-ipv6
 luci-proto-ppp
 luci-theme-bootstrap
 nano
-nodogsplash
-reaver
+#nodogsplash
+#reaver
 rpcd-mod-rrdns
 screen
 tcpdump

@@ -1,4 +1,4 @@
-alias cget="wget -q -O - "
+alias cget="wget -q -O -"
 alias portal="wget -q -O - http://detectportal.firefox.com/success.txt"
 alias mon="iw phy phy0 interface add mon0 type monitor && ifconfig mon0 up"
 alias ivs="airodump-ng --ivs --beacons mon0 --write"

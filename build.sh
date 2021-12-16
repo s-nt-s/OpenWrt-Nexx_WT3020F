@@ -1,5 +1,18 @@
 #!/bin/bash
+set -e
+
 cd "$(dirname "$0")"
+
+function exe {
+  echo "\$ $@"
+  $@
+}
+function fmt_json {
+  if [ -f "$1" ]; then
+    cat "$1" | jq -r '.' > "$1.tmp"
+    mv "$1.tmp" "$1"
+  fi
+}
 
 if [ -f ~/.ssh/nexx.pub ]; then
   cp ~/.ssh/nexx.pub files/etc/dropbear/authorized_keys
@@ -33,16 +46,32 @@ fi
 EOF_cat
 fi
 fi
-sed 's/\s\s*/\n/g' packages.txt | sed '/^\s*$/d' | sort | uniq > packages.txt.tmp
-mv packages.txt.tmp packages.txt
-PCKS=$(paste -sd " " packages.txt)
+
+if [ ! -z "$SRV_SYSLOG" ]; then
+cat << EOF_cat > files/etc/uci-defaults/96_log_ip.sh
+#!/bin/sh
+# Guardar logs en un servidor syslog
+uci set system.@system[0].log_ip='${SRV_SYSLOG}'
+uci set system.@system[0].log_port='514'
+uci commit system
+EOF_cat
+fi
+
+PCKS=$(sed -e '/^\s*$/d' -e '/^#/d' packages.txt | cut -d' ' -f1 | sort | uniq | paste -sd " " -)
 
 cd openwrt*/
 if [ "$1" == "clean" ]; then
     make clean
+    echo ""
 fi
-
-make image PROFILE="wt3020-8M" PACKAGES="$PCKS" FILES=files/ BIN_DIR="$(realpath ..)/bin"
+TRG="$(realpath ..)/bin"
+if [ -d "$TRG" ]; then
+  rm -R "$TRG"
+fi
+mkdir -p "$TRG"
+make image PROFILE="nexx_wt3020-8m" PACKAGES="$PCKS" FILES=files/ BIN_DIR="$TRG"
 
 cd ..
+
+fmt_json bin/profiles.json
 ./diff.sh > bin/README.md
