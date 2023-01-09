@@ -1,7 +1,6 @@
 # Objetvio
 
-Crear una imagen `OpenWrt` para el router [`Nexx WT3020F`](https://wikidevi.wi-cat.ru/Nexx_WT3020) con los paquetes básicos,
-ahorrando el máximo espacio y evitando tener que hacer [`extroot`](https://openwrt.org/docs/guide-user/additional-software/extroot_configuration)
+Crear una imagen `OpenWrt` para usar como servidor de impresión el router [`Nexx WT3020F`](https://wikidevi.wi-cat.ru/Nexx_WT3020) y sin necesidad de hacer [`extroot`](https://openwrt.org/docs/guide-user/additional-software/extroot_configuration)
 
 ## ¿Por qué?
 
@@ -11,8 +10,7 @@ paquetes a posteriori. Ver:
     * [reddit.com - What can i safely remove from this list to save space?](https://www.reddit.com/r/openwrt/comments/9zyn09/what_can_i_safely_remove_from_this_list_to_save/ead6b8o/)
     * [openwrt.org - No space left on device](https://openwrt.org/faq/no_space_left_on_device)
 * Hacer [`extroot`](https://openwrt.org/docs/guide-user/additional-software/extroot_configuration)
-provoca que necesitemos dedicar permanentemente un pendrive al router. Prefiero tener
-el sistema enteramente en el router, y usar el usb solo para almacenamiento de datos y memoria `swap` de manera que sea fácil prescindir de él o sustituirlo por otro.
+provoca que necesitemos dedicar permanentemente un pendrive al router.
 
 # Realización
 
@@ -21,16 +19,13 @@ el sistema enteramente en el router, y usar el usb solo para almacenamiento de d
 * Usar [`image builder`](https://openwrt.org/docs/guide-user/additional-software/imagebuilder)
 * [Eliminar paquetes](https://openwrt.org/faq/which_packages_can_i_safely_remove_to_save_space) no deseados
 * <s>Comprimir los `css`, `js` y `html`</s> (ya no hace falta, viene por defecto)
-* Instalar paquetes extra, por ejemplo `nano` y `aircrack`
+* Instalar paquetes de servidor de impresión
 * Cambiar la ip a `192.168.8.1` para que coincida con la de la pegatina del router y para que no colisione con otros routers
 * Habilitar la contraseña `root`
-* Automontar USB con una partición para `swap` y otra para datos `ext4`
 * Añadir `alias` y `prompt` al gusto
 * Añadir un comando para obtener la ip pública
 * Poner el router en la misma zona horaria que la del ordenador donde se esta generando la imagen
-* Configurar redes inalámbricas:
-    * Poner contraseña a la red principal
-    * Crear una red para invitados protegida con `nodogsplash`
+* Configurar la conexión a la wifi principal
 
 ## Preparar entorno
 
@@ -122,6 +117,6 @@ además se encarga de crear los ficheros de configuración para definir las clav
 ## Actualización
 
 ```
-$ scp bin/openwrt-*-squashfs-sysupgrade.bin nexx:usb/
-$ ssh nexx 'sysupgrade -n -v usb/openwrt-*-sysupgrade.bin'
+$ scp bin/openwrt-*-squashfs-sysupgrade.bin nexx:/tmp/
+$ ssh nexx 'sysupgrade -n -v /tmp/openwrt-*-sysupgrade.bin'
 ```

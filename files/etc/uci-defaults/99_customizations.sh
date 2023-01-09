@@ -8,28 +8,6 @@ sed "s/option ssid 'OpenWrt'/option ssid 'NEXX'/" -i /etc/config/wireless
 # Borrar banner
 rm /etc/banner
 
-# Montar USB
-if [ -f /etc/config/fstab ]; then
-if ! grep -q '/dev/sda1' /etc/config/fstab; then
-cat << EOF_cat >> /etc/config/fstab
-config mount
-  option device '/dev/sda1'
-  option enabled '1'
-  option target '/mnt/usb'
-  option enabled_fsck '1'
-
-config swap
-  option device '/dev/sda2'
-  option enabled '1'
-EOF_cat
-else
-  sed "s/option\s*enabled\s*'0'/option\tenabled\t'1'/g" -i /etc/config/fstab
-  sed "s/'\/mnt\/sda2'/'\/mnt\/usb'\n\toption\tenabled_fsck\t'1'/" -i /etc/config/fstab
-fi
-fi
-mkdir -p /mnt/usb
-ln -s /mnt/usb /root/usb
-
 # Hacer que las sesiones screen hagan login en sh (asi podremos usar los alias)
 echo "screen sh -l" >> /etc/screenrc
 
@@ -117,6 +95,14 @@ uci set firewall.@redirect[-1].src_dport='80'
 uci set firewall.@redirect[-1].dest='lan'
 uci set firewall.@redirect[-1].dest_ip='192.168.8.1'
 uci set firewall.@redirect[-1].dest_port='80'
+uci add firewall redirect
+uci set firewall.@redirect[-1].target='DNAT'
+uci set firewall.@redirect[-1].name='PRINTER'
+uci set firewall.@redirect[-1].src='wan'
+uci set firewall.@redirect[-1].src_dport='9100'
+uci set firewall.@redirect[-1].dest='lan'
+uci set firewall.@redirect[-1].dest_ip='192.168.8.1'
+uci set firewall.@redirect[-1].dest_port='9100'
 
 uci commit network
 uci commit dhcp
@@ -126,39 +112,10 @@ service network reload
 service dnsmasq restart
 service firewall restart
 
-# Deshabilitar nodogsplash
-if [ -f /etc/config/nodogsplash ]; then
-  sed 's/option enabled 1/option enabled 0/' -i /etc/config/nodogsplash
-  sed "s/option gatewayinterface 'br-lan'/option gatewayinterface 'br-guest' # 'br-lan'/" -i /etc/config/nodogsplash
-  sed "s/option gatewayname 'OpenWrt Nodogsplash'/option gatewayname 'FreeWifi'/" -i /etc/config/nodogsplash
-  sed "s/list authenticated_users 'allow all'/#list authenticated_users 'allow all'/" -i /etc/config/nodogsplash
-  sed -E "s/#(list authenticated_users 'allow .*(53|80|443))/\1/" -i /etc/config/nodogsplash
-  sed -E "s/(list users_to_router 'allow .*(22|23|80|443))/#\1/" -i /etc/config/nodogsplash
-  service nodogsplash restart
-fi
 
-# hostnames
-if ! grep -q 'madrid.org' /etc/config/dhcp; then
-# Facilita la conexion a la wifi de las bibliotecas de Madrid
-cat << EOF_cat >> /etc/config/dhcp
-config domain
-  option name 'wifi-ciudadano.madrid.org'
-  option ip '172.22.74.4'
-
-config domain
-  option name 'network-login.madrid.org'
-  option ip '172.22.216.37'
-EOF_cat
-fi
 if [ -f /usr/bin/getip.sh ]; then
   mv /usr/bin/getip.sh /usr/bin/getip
   chmod 755 /usr/bin/getip
-fi
-if [ -f /usr/bin/set_root_pws.lua ]; then
-  rm /usr/bin/set_root_pws.lua
-fi
-if [ -f /usr/bin/msmtp ]; then
-  ln -s /usr/bin/msmtp /usr/sbin/sendmail
 fi
 
 function my_chmod {

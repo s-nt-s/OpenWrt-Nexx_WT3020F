@@ -47,16 +47,6 @@ EOF_cat
 fi
 fi
 
-if [ ! -z "$SRV_SYSLOG" ]; then
-cat << EOF_cat > files/etc/uci-defaults/96_log_ip.sh
-#!/bin/sh
-# Guardar logs en un servidor syslog
-uci set system.@system[0].log_ip='${SRV_SYSLOG}'
-uci set system.@system[0].log_port='514'
-uci commit system
-EOF_cat
-fi
-
 PCKS=$(sed -e '/^\s*$/d' -e '/^#/d' packages.txt | cut -d' ' -f1 | sort | uniq | paste -sd " " -)
 
 cd openwrt*/
