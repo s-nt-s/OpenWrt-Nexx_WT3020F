@@ -13,7 +13,7 @@ FLD_URL=$(echo "$BIN_URL" | sed 's/[^\/]*$//' )
 echo "$FLD_URL"
 BLD_URL=$(lynx -listonly -dump "$FLD_URL" | grep 'openwrt-imagebuilder' | grep "tar.xz" | sed 's/.* //')
 echo "$BLD_URL"
-rm -R openwrt-imagebuilder* 2> /dev/null
+rm -Rf openwrt-imagebuilder* 2> /dev/null
 wget "$BLD_URL"
 tar xf *.tar.xz
 if [ -d files ]; then
