@@ -13,3 +13,4 @@ ssmtp/
 ssmtp.conf
 revaliases
 aliases
+files.bak

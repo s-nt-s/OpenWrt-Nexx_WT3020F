@@ -1,4 +1,4 @@
-msmtp
+#msmtp
 #ssmtp
 #aircrack-ng
 #airmon-ng
