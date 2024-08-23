@@ -1,9 +1,11 @@
-# Cambios con respecto a [openwrt-22.03.3-ramips-mt7620](https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt7620/openwrt-22.03.3-ramips-mt7620.manifest)
+# Cambios con respecto a [openwrt-23.05.4-ramips-mt7620](https://downloads.openwrt.org/releases/23.05.4/targets/ramips/mt7620/openwrt-23.05.4-ramips-mt7620.manifest)
 
 ## Paquetes eliminados
 
+* kmod-crypto-acompress
+* kmod-lib-lzo
 * luci-ssl
-* px5g-wolfssl
+* px5g-mbedtls
 
 ## Paquetes añadidos
 
@@ -23,6 +25,8 @@
 * kmod-usb-storage
 * kmod-usb-storage-extras
 * libipset13
+* libiwinfo-lua
+* liblua5.1.5
 * libncurses6
 * libpcap1
 * nano

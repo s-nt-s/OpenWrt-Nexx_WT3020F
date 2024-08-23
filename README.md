@@ -6,7 +6,7 @@ ahorrando el máximo espacio y evitando tener que hacer [`extroot`](https://open
 ## ¿Por qué?
 
 * Tal como esta hecho `OpenWrt` es mejor crear una imagen con los paquetes deseados,
-que quemar [la imagen por defecto](https://openwrt.org/toh/nexx/wt3020) e instalar/desintalar
+que quemar [la imagen por defecto](https://openwrt.org/toh/nexx/wt3020) e instalar/desinstalar
 paquetes a posteriori. Ver:
     * [reddit.com - What can i safely remove from this list to save space?](https://www.reddit.com/r/openwrt/comments/9zyn09/what_can_i_safely_remove_from_this_list_to_save/ead6b8o/)
     * [openwrt.org - No space left on device](https://openwrt.org/faq/no_space_left_on_device)
@@ -43,12 +43,12 @@ $ sudo apt-get install build-essential libncurses5-dev libncursesw5-dev zlib1g-d
 Navegando por openwrt.org:
 
 * [nexx_wt3020f](https://openwrt.org/toh/hwdata/nexx/nexx_wt3020f)
-* [21.02.1 - Firmware OpenWrt Install](https://downloads.openwrt.org/releases/21.02.1/targets/ramips/mt7620/openwrt-21.02.1-ramips-mt7620-nexx_wt3020-8m-squashfs-factory.bin)
-* [21.02.1 - Carpeta de ramips/mt7620](https://downloads.openwrt.org/releases/21.02.1/targets/ramips/mt7620/)
-* [21.02.1 - imagebuilder](https://downloads.openwrt.org/releases/21.02.1/targets/ramips/mt7620/openwrt-imagebuilder-21.02.1-ramips-mt7620.Linux-x86_64.tar.xz)
+* [23.05.4 - Firmware OpenWrt Install](https://downloads.openwrt.org/releases/23.05.4/targets/ramips/mt7620/openwrt-23.05.4-ramips-mt7620-nexx_wt3020-8m-squashfs-factory.bin)
+* [23.05.4 - Carpeta de ramips/mt7620](https://downloads.openwrt.org/releases/23.05.4/targets/ramips/mt7620/)
+* [23.05.4 - imagebuilder](https://downloads.openwrt.org/releases/23.05.4/targets/ramips/mt7620/openwrt-imagebuilder-23.05.4-ramips-mt7620.Linux-x86_64.tar.xz)
 
 ```console
-$ wget "https://downloads.openwrt.org/releases/21.02.1/targets/ramips/mt7620/openwrt-imagebuilder-21.02.1-ramips-mt7620.Linux-x86_64.tar.xz"
+$ wget "https://downloads.openwrt.org/releases/23.05.4/targets/ramips/mt7620/openwrt-imagebuilder-23.05.4-ramips-mt7620.Linux-x86_64.tar.xz"
 $ tar xf *.tar.xz
 ```
 
@@ -122,6 +122,6 @@ además se encarga de crear los ficheros de configuración para definir las clav
 ## Actualización
 
 ```
-$ scp bin/openwrt-*-squashfs-sysupgrade.bin nexx:usb/
-$ ssh nexx 'sysupgrade -n -v usb/openwrt-*-sysupgrade.bin'
+$ scp bin/openwrt-*-squashfs-sysupgrade.bin nexx:/tmp/
+$ ssh nexx 'sysupgrade -n -v /tmp/openwrt-*-sysupgrade.bin'
 ```

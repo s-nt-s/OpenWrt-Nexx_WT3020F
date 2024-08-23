@@ -30,13 +30,14 @@ sed "/option disabled '1'/d" -i /etc/config/wireless
 echo -e "${ROOT_PASS}\n${ROOT_PASS}" | passwd
 EOF_cat
 fi
+
 if [ -f /etc/timezone ]; then
 MY_TZ_NAME=$(cat /etc/timezone)
 if [ ! -z "$MY_TZ_NAME" ]; then
 cat << EOF_cat > files/etc/uci-defaults/97_timezone.sh
 #!/bin/sh
-if [ -f /usr/lib/lua/luci/sys/zoneinfo/tzdata.lua ]; then
-  MY_TZ=\$(grep "{\\s*'${MY_TZ_NAME}',\\s*" /usr/lib/lua/luci/sys/zoneinfo/tzdata.lua | sed "s/.*,\\s*'//" | sed "s/'.*//")
+if [ -f /usr/share/ucode/luci/zoneinfo.uc ]; then
+  MY_TZ=\$(grep "${MY_TZ_NAME}" /usr/share/ucode/luci/zoneinfo.uc | cut -d"'" -f4)
   if [ ! -z "\$MY_TZ" ]; then
     uci set system.@system[0].zonename='${MY_TZ_NAME}'
     uci set system.@system[0].timezone="\${MY_TZ}"

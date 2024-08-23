@@ -1,4 +1,4 @@
-7f89a19fb22925d90cb28f93496f9ef80dc2dbb4b4c42e670b995eef6c2653a8 *openwrt-22.03.3-ramips-mt7620-nexx_wt3020-8m-squashfs-factory.bin
-907386c26c0f3c7b230b963c5dc72295a18114b22268b1804ac13a110491cdc5 *openwrt-22.03.3-ramips-mt7620-nexx_wt3020-8m-squashfs-sysupgrade.bin
-166710b251ab1d3adf00b666cd1ce31723aa4ac6a09bb282579fbc88a021d39e *openwrt-22.03.3-ramips-mt7620-nexx_wt3020-8m.manifest
-564bb3d1d7dd27867a705f4c870bd32bef2ab05667ffc446c63bb0d254790746 *profiles.json
+3947044bb116915469aa4aa8ce6f83ce75cd4b6d600fd86125c3dcb3ce7f6eda *openwrt-23.05.4-ramips-mt7620-nexx_wt3020-8m-squashfs-factory.bin
+fc20425d2639aeb55890f2ab48d037469e3253d0a316ffca8c21efbb3a2c622f *openwrt-23.05.4-ramips-mt7620-nexx_wt3020-8m-squashfs-sysupgrade.bin
+0801d82d2b1c88ae0f65eb8611ee9063b654b7b3dccd98f7cf1b36d0b950301e *openwrt-23.05.4-ramips-mt7620-nexx_wt3020-8m.manifest
+463b32c2d4af5b85a019b19a5937aef4866f07a50cf877117f6e917414ccf56b *profiles.json
