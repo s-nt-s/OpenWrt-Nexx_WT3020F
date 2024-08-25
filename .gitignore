@@ -2,9 +2,7 @@ notas.txt
 env.sh
 authorized_keys
 openwrt-*
-9*_pass.sh
-9*_timezone.sh
-9*_log_ip.sh
+8*_*.sh
 bin/*.bin
 !bin/openwrt-*.manifest
 debug/*

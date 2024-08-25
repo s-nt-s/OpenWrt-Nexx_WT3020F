@@ -21,41 +21,36 @@ fi
 
 if [ -f ./env.sh ]; then
 source ./env.sh
-cat << EOF_cat > files/etc/uci-defaults/98_pass.sh
-#!/bin/sh
-# Darle seguridad a la wifi
-sed "s/option encryption 'none'/option encryption 'psk2'\n\toption key '${WIFI_PASS}'/" -i /etc/config/wireless
-sed "/option disabled '1'/d" -i /etc/config/wireless
-# Poner la pass a root
-echo -e "${ROOT_PASS}\n${ROOT_PASS}" | passwd
-EOF_cat
 fi
+
+rm -rf files/etc/uci-defaults/8*.sh
+
+if [ ! -z "$ROOT_PASS" ]; then
+sed "s|REPLACE_WITH_ROOT_PASS|$ROOT_PASS|g" \
+  template/uci_root.sh > files/etc/uci-defaults/80_root.sh
+fi
+
+if [ ! -z "$WIFI_PASS" ]; then
+sed "s|REPLACE_WITH_WIFI_PASS|$WIFI_PASS|g" \
+  template/uci_wifi.sh > files/etc/uci-defaults/81_wifi.sh
+fi
+
 
 if [ -f /etc/timezone ]; then
 MY_TZ_NAME=$(cat /etc/timezone)
 if [ ! -z "$MY_TZ_NAME" ]; then
-cat << EOF_cat > files/etc/uci-defaults/97_timezone.sh
-#!/bin/sh
-if [ -f /usr/share/ucode/luci/zoneinfo.uc ]; then
-  MY_TZ=\$(grep "${MY_TZ_NAME}" /usr/share/ucode/luci/zoneinfo.uc | cut -d"'" -f4)
-  if [ ! -z "\$MY_TZ" ]; then
-    uci set system.@system[0].zonename='${MY_TZ_NAME}'
-    uci set system.@system[0].timezone="\${MY_TZ}"
-    uci commit system
-  fi
-fi
-EOF_cat
+sed "s|REPLAE_WITH_TZ_NAME|$MY_TZ_NAME|g" \
+  template/uci_timezone.sh > files/etc/uci-defaults/82_timezone.sh
 fi
 fi
 
 if [ ! -z "$SRV_SYSLOG" ]; then
-cat << EOF_cat > files/etc/uci-defaults/96_log_ip.sh
-#!/bin/sh
-# Guardar logs en un servidor syslog
-uci set system.@system[0].log_ip='${SRV_SYSLOG}'
-uci set system.@system[0].log_port='514'
-uci commit system
-EOF_cat
+sed "s|REPLACE_WITH_SRV_SYSLOG|$SRV_SYSLOG|g" \
+  template/uci_syslog.sh > files/etc/uci-defaults/83_log_ip.sh
+fi
+
+if [ ! -z "$MOUNT_USB" ]; then
+cp template/uci_mount.sh files/etc/uci-defaults/89_mount.sh
 fi
 
 PCKS=$(sed -e '/^\s*$/d' -e '/^#/d' packages.txt | cut -d' ' -f1 | sort | uniq | paste -sd " " -)

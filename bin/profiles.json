@@ -46,15 +46,15 @@
         {
           "filesystem": "squashfs",
           "name": "openwrt-23.05.4-ramips-mt7620-nexx_wt3020-8m-squashfs-sysupgrade.bin",
-          "sha256": "fc20425d2639aeb55890f2ab48d037469e3253d0a316ffca8c21efbb3a2c622f",
-          "sha256_unsigned": "99587aefd474af62bdb573d90240625c20a28be100a5e13e2d4b445d89f74ec3",
+          "sha256": "f5fae217d9fea57ee4d907a0b428983b05587af5f8269c30214912f8c9b3228b",
+          "sha256_unsigned": "e2248c4972190b0befc74ff9ca2d473f1738212f00aa83b39026ae42a20fd0f1",
           "type": "sysupgrade"
         },
         {
           "filesystem": "squashfs",
           "name": "openwrt-23.05.4-ramips-mt7620-nexx_wt3020-8m-squashfs-factory.bin",
-          "sha256": "3947044bb116915469aa4aa8ce6f83ce75cd4b6d600fd86125c3dcb3ce7f6eda",
-          "sha256_unsigned": "3947044bb116915469aa4aa8ce6f83ce75cd4b6d600fd86125c3dcb3ce7f6eda",
+          "sha256": "b5293dda9ba64eee7c4806ca6a7e1225a40bc8cd8b3e9058ac261e4531ae5708",
+          "sha256_unsigned": "b5293dda9ba64eee7c4806ca6a7e1225a40bc8cd8b3e9058ac261e4531ae5708",
           "type": "factory"
         }
       ],
