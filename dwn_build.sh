@@ -11,11 +11,11 @@ BIN_URL=$(lynx -listonly -dump "$ROOT_URL" | grep 'releases' | grep 'squashfs-fa
 echo "$BIN_URL"
 FLD_URL=$(echo "$BIN_URL" | sed 's/[^\/]*$//' )
 echo "$FLD_URL"
-BLD_URL=$(lynx -listonly -dump "$FLD_URL" | grep 'openwrt-imagebuilder' | grep "tar.xz" | sed 's/.* //')
+BLD_URL=$(lynx -listonly -dump "$FLD_URL" | grep 'openwrt-imagebuilder' | grep "tar.zst" | sed 's/.* //')
 echo "$BLD_URL"
 rm -Rf openwrt-imagebuilder* 2> /dev/null
 wget "$BLD_URL"
-tar xf *.tar.xz
+tar xf *.tar.zst
 if [ -d files ]; then
   cd openwrt*/
   ln -s ../files
