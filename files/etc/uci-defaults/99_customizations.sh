@@ -160,7 +160,7 @@ fi
 function my_chmod {
   if [ -f "$2" ]; then
     chmod "$1" "$2"
-  elif [ -d "$$1" ]; then
+  elif [ -d "$2" ]; then
     chmod "$1" -R "$2"
     if [ "$1" == "600" ]; then
       chmod 700 "$2"
