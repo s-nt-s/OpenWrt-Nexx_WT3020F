@@ -2,6 +2,24 @@
 # Cambiar IP
 sed 's/\b192\.168\.1\.1\b/192.168.8.1/g' -i /etc/config/network
 
+# Forzar uso del DNS del router (192.168.8.1)
+uci set dhcp.@dnsmasq[0].noresolv='1'
+uci set dhcp.@dnsmasq[0].server='192.168.8.1'
+
+uci add firewall redirect
+uci set firewall.@redirect[-1].name='Force-DNS'
+uci set firewall.@redirect[-1].src='lan'
+uci set firewall.@redirect[-1].src_dport='53'
+uci set firewall.@redirect[-1].proto='tcp udp'
+uci set firewall.@redirect[-1].target='DNAT'
+uci set firewall.@redirect[-1].dest_ip='192.168.8.1'
+uci set firewall.@redirect[-1].dest_port='53'
+
+if ! uci show dhcp | grep -q '/etc/hosts.blocklist'; then
+  uci add_list dhcp.@dnsmasq[0].addnhosts='/etc/hosts.blocklist'
+  uci commit dhcp
+fi
+
 # Cambiar el SSID de la wifi
 sed "s/option ssid 'OpenWrt'/option ssid 'NEXX'/" -i /etc/config/wireless
 
@@ -142,8 +160,11 @@ fi
 function my_chmod {
   if [ -f "$2" ]; then
     chmod "$1" "$2"
-  elif [ -d "$fl" ]; then
+  elif [ -d "$$1" ]; then
     chmod "$1" -R "$2"
+    if [ "$1" == "600" ]; then
+      chmod 700 "$2"
+    fi
   fi
 }
 my_chmod 600 /etc/dropbear
